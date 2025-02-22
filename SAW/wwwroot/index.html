@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .hidden { display: none; }
+        .tile { cursor: pointer; padding: 20px; text-align: center; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-light">
+<div class="row text-center mt-5">
+    <div class="col-md-3 tile bg-primary text-white" onclick="handleCategoryClick('events')">Wydarzenia</div>
+    <div class="col-md-3 tile bg-success text-white" onclick="handleCategoryClick('tickets')">Bilety</div>
+    <div class="col-md-3 tile bg-warning text-dark" onclick="handleCategoryClick('reviews')">Recenzje</div>
+    <div class="col-md-3 tile bg-danger text-white" onclick="handleCategoryClick('users')">Użytkownicy</div>
+</div>
+
+<div id="events" class="hidden mt-4">
+    <h2>Wydarzenia</h2>
+    <form id="createEventForm">
+        <input type="text" id="eventName" class="form-control mb-2" placeholder="Nazwa wydarzenia">
+        <input type="text" id="eventLocation" class="form-control mb-2" placeholder="Miejsce">
+        <input type="date" id="eventDate" class="form-control mb-2">
+        <button class="btn btn-success">Dodaj wydarzenie</button>
+    </form>
+    <form id="searchEventForm">
+        <input type="text" id="searchQuery" class="form-control mb-2" placeholder="Szukaj wydarzenia">
+        <button class="btn btn-info">Szukaj</button>
+    </form>
+    <ul id="eventList"></ul>
+</div>
+
+<div id="tickets" class="hidden mt-4">
+    <h2>Bilety</h2>
+    <form id="createTicketForm">
+        <input type="number" id="eventIdForTicket" class="form-control mb-2" placeholder="ID wydarzenia">
+        <button class="btn btn-info">Dodaj bilet</button>
+    </form>
+    <ul id="ticketList"></ul>
+    <input type="number" id="ticketIdToDelete" class="form-control mb-2" placeholder="ID biletu do usunięcia">
+    <button class="btn btn-danger" id="deleteTicketButton">Usuń bilet</button>
+</div>
+
+<div id="reviews" class="hidden mt-4">
+    <h2>Recenzje</h2>
+    <form id="createReviewForm">
+        <input type="number" id="eventIdForReview" class="form-control mb-2" placeholder="ID wydarzenia">
+        <textarea id="reviewText" class="form-control mb-2" placeholder="Napisz recenzję"></textarea>
+        <button class="btn btn-warning">Dodaj recenzję</button>
+    </form>
+    <ul id="reviewList"></ul>
+    <input type="number" id="reviewIdToDelete" class="form-control mb-2" placeholder="ID recenzji do usunięcia">
+    <button class="btn btn-danger" id="deleteReviewButton">Usuń recenzję</button>
+</div>
+
+<div id="users" class="hidden mt-4">
+    <h2>Użytkownicy</h2>
+    <form id="create-user-form">
+        <input type="text" id="username" class="form-control mb-2" placeholder="Nazwa użytkownika" required>
+        <input type="password" id="password" class="form-control mb-2" placeholder="Hasło" required>
+        <input type="email" id="userEmail" class="form-control mb-2" placeholder="Email użytkownika" required>
+        <select id="userRole" class="form-control mb-2">
+            <option value="Participant">Participant</option>
+            <option value="Organizer">Organizer</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Dodaj użytkownika</button>
+    </form>
+
+    <input type="text" id="userIdToDelete" class="form-control mb-2" placeholder="ID użytkownika do usunięcia">
+    <button class="btn btn-danger" id="deleteUserButton">Usuń użytkownika</button>
+    <button class="btn btn-info" id="getUserListButton">Pokaż użytkowników</button>
+    <ul id="userList"></ul>
+</div>
+
+<script src="js/jscript.js"></script>
+</body>
+</html>
+
+
+

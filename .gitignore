@@ -1,0 +1,50 @@
+# Przestrzeń robocza JetBrains Rider
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Folder bin i obj
+bin/
+obj/
+
+# Pliki z konfiguracją builda
+*.build
+*.config
+
+# Pliki i foldery zależności
+packages/
+node_modules/
+
+# Pliki i foldery specyficzne dla systemu operacyjnego
+Thumbs.db
+.DS_Store
+ehthumbs.db
+
+# Pliki dla systemu operacyjnego Windows
+*.vspscc
+*.vssscc
+
+# Pliki tymczasowe IDE
+.vscode/
+.idea/
+
+# Pliki tymczasowe do debugowania
+*.pdb
+*.mdb
+*.log
+
+# Pliki specyficzne dla systemu
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Foldery cache
+.vs/
+.vscode/
+
+# Pliki specyficzne dla systemu Linux/Mac
+*.swp
+*~

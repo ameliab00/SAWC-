@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="13.0.1" />
+        <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.2" />
+        <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.2" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
+        <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.1" />
+        <!-- Zmienione na wersję 8.0.2, aby pasowała do Pomelo.EntityFrameworkCore.MySql -->
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.2" />
+        <!-- Zmienione na wersję 9.0.2, aby pasowała do Twoich wymagań -->
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.2">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.2" />
+        <!-- Zmienione na wersję 8.0.0 -->
+        <PackageReference Include="MySql.EntityFrameworkCore" Version="9.0.0" />
+        <!-- Zmienione na wersję 8.0.0 -->
+        <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0-preview.2.efcore.9.0.0" />
+    </ItemGroup>
+
+</Project>
+
+
