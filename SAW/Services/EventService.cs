@@ -33,7 +33,7 @@ namespace SAW.Services
         // Tworzenie nowego wydarzenia
         public async Task<Event> CreateEventAsync(CreateEventRequest request)
         {
-            if (await _eventRepository.FindByTitleIgnoreCaseAsync(request.Title) != null)
+            if (await _eventRepository.FindByTitleAsync(request.Title) != null)
             {
                 throw new DuplicateException($"Wydarzenie o tytule {request.Title} już istnieje.");
             }
@@ -84,33 +84,42 @@ namespace SAW.Services
         public async Task DeleteEventAsync(long eventId)
         {
             var eventToDelete = await _eventRepository.GetByIdAsync(eventId);
+
             if (eventToDelete == null)
             {
                 throw new EntityNotFoundException($"Wydarzenie o ID {eventId} nie zostało znalezione.");
             }
+            
+            // if (eventToDelete.UserEntities != null)
+            // {
+            //     foreach (var user in eventToDelete.UserEntities)
+            //     {
+            //         user.EventEntities?.Remove(eventToDelete);
+            //     }
+            //
+            //     await _userRepository.SaveChangesAsync();
+            // }
 
-            foreach (var user in eventToDelete.UserEntities)
+            // 🟢 Sprawdź, czy TicketEntities nie jest null przed iteracją
+            if (eventToDelete.TicketEntities != null)
             {
-                user.EventEntities.Remove(eventToDelete);
+                foreach (var ticket in eventToDelete.TicketEntities)
+                {
+                    // ticket.UserEntity = null;
+                    ticket.EventEntity = null;
+                }
+
+                await _ticketRepository.SaveChangesAsync();
+                await _ticketRepository.DeleteTicketsAsync(eventToDelete.TicketEntities);
             }
 
-            await _userRepository.SaveChangesAsync();
-
-            foreach (var ticket in eventToDelete.TicketEntities)
-            {
-                ticket.UserEntity = null;
-                ticket.EventEntity = null;
-            }
-
-            await _ticketRepository.SaveChangesAsync();
-            await _ticketRepository.DeleteTicketsAsync(eventToDelete.TicketEntities);
             await _eventRepository.DeleteAsync(eventToDelete);
         }
 
         // Wyszukiwanie wydarzeń po tytule
         public async Task<List<Event>> SearchEventsAsync(string query)
         {
-            return await _eventRepository.SearchByTitleLikeIgnoreCaseAsync(query);
+            return await _eventRepository.SearchByTitleAsync(query);
         }
 
         public async Task<Event?> GetEventByIdAsync(long eventId)

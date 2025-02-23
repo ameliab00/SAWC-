@@ -9,6 +9,6 @@ namespace SAW.DTO.Ticket
         public DateTime PurchaseDate { get; set; }
         public Guid Barcode { get; set; }
         public Models.Event EventEntity { get; set; }
-        public Models.User UserEntity { get; set; }
+        // public Models.User UserEntity { get; set; }
     }
 }

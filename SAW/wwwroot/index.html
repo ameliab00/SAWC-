@@ -22,45 +22,71 @@
 
 <div id="events" class="hidden mt-4">
     <h2>Wydarzenia</h2>
+
     <form id="createEventForm">
-        <input type="text" id="eventName" class="form-control mb-2" placeholder="Nazwa wydarzenia">
-        <input type="text" id="eventLocation" class="form-control mb-2" placeholder="Miejsce">
-        <input type="date" id="eventDate" class="form-control mb-2">
+        <input type="text" id="eventName" class="form-control mb-2" placeholder="Nazwa wydarzenia" required>
+        <input type="text" id="eventLocation" class="form-control mb-2" placeholder="Miejsce" required>
+        <input type="number" id="eventPrice" class="form-control mb-2" placeholder="Cena" step="0.01" required>
+        <input type="date" id="eventStartDate" class="form-control mb-2" required>
+        <input type="date" id="eventEndDate" class="form-control mb-2" required>
+        <input type="number" id="eventCapacity" class="form-control mb-2" placeholder="Liczba miejsc" required>
+        <textarea id="eventDescription" class="form-control mb-2" placeholder="Opis wydarzenia" required></textarea>
         <button class="btn btn-success">Dodaj wydarzenie</button>
     </form>
+
     <form id="searchEventForm">
         <input type="text" id="searchQuery" class="form-control mb-2" placeholder="Szukaj wydarzenia">
         <button class="btn btn-info">Szukaj</button>
     </form>
-    <ul id="eventList"></ul>
+
+    <ul id="eventList" class="list-group mt-3"></ul>
+    <ul id="searchEventList" class="list-group mt-3"></ul>
 </div>
+
 
 <div id="tickets" class="hidden mt-4">
     <h2>Bilety</h2>
+    
+    <form id="fetchTicketsForm">
+        <input type="number" id="eventIdForTickets" class="form-control mb-2" placeholder="ID wydarzenia">
+        <button type="submit" class="btn btn-primary">Pobierz bilety</button>
+    </form>
+    
     <form id="createTicketForm">
         <input type="number" id="eventIdForTicket" class="form-control mb-2" placeholder="ID wydarzenia">
         <button class="btn btn-info">Dodaj bilet</button>
     </form>
+    
     <ul id="ticketList"></ul>
+    
     <input type="number" id="ticketIdToDelete" class="form-control mb-2" placeholder="ID biletu do usunięcia">
     <button class="btn btn-danger" id="deleteTicketButton">Usuń bilet</button>
 </div>
 
+
 <div id="reviews" class="hidden mt-4">
     <h2>Recenzje</h2>
     <form id="createReviewForm">
-        <input type="number" id="eventIdForReview" class="form-control mb-2" placeholder="ID wydarzenia">
-        <textarea id="reviewText" class="form-control mb-2" placeholder="Napisz recenzję"></textarea>
-        <button class="btn btn-warning">Dodaj recenzję</button>
+        <input type="number" id="eventIdForReview" class="form-control mb-2" placeholder="ID wydarzenia" required>
+        <input type="text" id="reviewTitle" class="form-control mb-2" placeholder="Tytuł recenzji" required>
+        <textarea id="reviewText" class="form-control mb-2" placeholder="Napisz recenzję" required></textarea>
+        <input type="number" id="reviewRating" class="form-control mb-2" placeholder="Ocena (1-5)" min="1" max="5" required>
+        <button type="submit" class="btn btn-warning">Dodaj recenzję</button>
     </form>
+    
+    <input type="number" id="eventIdToFetchReviews" class="form-control mb-2" placeholder="ID wydarzenia do pobrania recenzji">
+    <button class="btn btn-primary" id="fetchReviewsButton">Pobierz recenzje</button>
+
     <ul id="reviewList"></ul>
+
     <input type="number" id="reviewIdToDelete" class="form-control mb-2" placeholder="ID recenzji do usunięcia">
     <button class="btn btn-danger" id="deleteReviewButton">Usuń recenzję</button>
 </div>
 
+
 <div id="users" class="hidden mt-4">
     <h2>Użytkownicy</h2>
-    <form id="create-user-form">
+    <form id="createUserForm">
         <input type="text" id="username" class="form-control mb-2" placeholder="Nazwa użytkownika" required>
         <input type="password" id="password" class="form-control mb-2" placeholder="Hasło" required>
         <input type="email" id="userEmail" class="form-control mb-2" placeholder="Email użytkownika" required>

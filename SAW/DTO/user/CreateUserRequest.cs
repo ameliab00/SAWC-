@@ -1,11 +1,12 @@
 using System.ComponentModel.DataAnnotations;
+using SAW.Models;
 
 namespace SAW.DTO.User
 {
     public class CreateUserRequest
     {
         [Required(ErrorMessage = "Username is mandatory")]
-        [StringLength(50, ErrorMessage = "Username cannot be longer than 50 characters.")]
+        [StringLength(50, ErrorMessage = "Username length should be less than 50 characters")]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Password is mandatory")]
@@ -13,7 +14,8 @@ namespace SAW.DTO.User
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Email is mandatory")]
-        [EmailAddress(ErrorMessage = "Email should be valid")]
         public string Email { get; set; }
+        
+        public UserRole UserRole { get; set; }
     }
 }

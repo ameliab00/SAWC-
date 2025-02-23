@@ -11,7 +11,7 @@ namespace SAW.Models
         public long Id { get; set; }
 
         [Column("purchase_date")]
-        public DateTime PurchaseDate { get; set; } = DateTime.Now;  // Domyślnie ustawiamy datę zakupu na teraz
+        public DateTime PurchaseDate { get; set; } = DateTime.Now;
 
         public Guid Barcode { get; set; }
 
@@ -20,14 +20,14 @@ namespace SAW.Models
         [ForeignKey("Event")]
         public long eventId { get; set; }
         
-        [ForeignKey("User")]
-        public long userId { get; set; }
+        // [ForeignKey("User")]
+        // public long userId { get; set; }
         public virtual Event EventEntity { get; set; }
-        public virtual User UserEntity { get; set; }
+        // public virtual User UserEntity { get; set; }
 
         public Ticket()
         {
-            this.Barcode = Guid.NewGuid();  // Tworzymy unikalny kod kreskowy
+            this.Barcode = Guid.NewGuid(); 
         }
     }
 }

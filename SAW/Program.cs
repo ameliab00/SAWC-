@@ -30,6 +30,12 @@ builder.Services.AddSingleton(mapper);
 
 builder.Services.AddHttpContextAccessor();
 
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+    });
+
 // Rejestracja repozytoriów
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<EventRepository>();
@@ -46,6 +52,7 @@ builder.Services.AddScoped<TicketService>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
 
 // Obsługa wyjątków
 if (app.Environment.IsDevelopment())
@@ -95,6 +102,7 @@ if (builder.Configuration.GetValue<bool>("Database:AutoMigrate"))
     using (var scope = app.Services.CreateScope())
     {
         var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        // dbContext.Database.EnsureDeleted();
         dbContext.Database.EnsureCreated(); // Automatyczne stosowanie migracji
     }
 }

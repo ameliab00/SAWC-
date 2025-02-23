@@ -40,7 +40,7 @@ namespace SAW.Models
         public string Description { get; set; }
 
         // Relacje
-        public virtual ICollection<User> UserEntities { get; set; }
+        // public virtual ICollection<User> UserEntities { get; set; }
 
         public virtual ICollection<Ticket> TicketEntities { get; set; } = new HashSet<Ticket>();
     }

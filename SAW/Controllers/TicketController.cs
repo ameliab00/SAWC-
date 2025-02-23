@@ -27,11 +27,13 @@ namespace SAW.Controllers
         {
             _logger.LogInformation("Fetching list of tickets for event with id: {EventId}", eventId);
             var tickets = await _ticketService.GetTicketsForEventAsync(eventId);
+    
             if (tickets == null || tickets.Count == 0)
             {
                 return NotFound(new { Message = "Brak biletów na to wydarzenie." });
             }
-            return Ok(new { Message = "Lista biletów pobrana pomyślnie.", Tickets = tickets });
+
+            return Ok(tickets); 
         }
 
         // Pobierz bilet po ID
@@ -63,6 +65,7 @@ namespace SAW.Controllers
                 return BadRequest(new { Message = "Brak dostępnych miejsc na to wydarzenie." });
             }
         }
+
 
         // Usuwanie biletu
         [HttpDelete("{ticketId}")]

@@ -23,17 +23,17 @@ namespace SAW.Models
         public int Rating { get; set; }
 
         [DataType(DataType.DateTime)]
-        public DateTime CreatedAt { get; set; } = DateTime.Now;  // Ustalamy domyślną wartość przy tworzeniu
+        public DateTime CreatedAt { get; set; } = DateTime.Now;  
         
         // Relacje
-        [ForeignKey("User")]
-        public long userId { get; set; }
+        // [ForeignKey("User")]
+        // public long userId { get; set; }
         
         [ForeignKey("Event")]
         public long eventId { get; set; }
 
         
-        public virtual User User { get; set; }
+        // public virtual User User { get; set; }
         
         public virtual Event Event { get; set; }
     }

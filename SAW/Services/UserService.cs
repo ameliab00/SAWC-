@@ -38,7 +38,9 @@ namespace SAW.Services
             var user = new User
             {
                 UserName = createUserRequest.UserName,
-                Email = createUserRequest.Email
+                Email = createUserRequest.Email,
+                Password = createUserRequest.Password,
+                UserRole = createUserRequest.UserRole
             };
             
             return await _userRepository.AddAsync(user);

@@ -25,14 +25,14 @@ namespace SAW.Repositories
                 .ToListAsync();
         }
 
-        // Pobranie recenzji dla użytkownika
-        public async Task<List<Review>> SortedListOfUserReviewsAsync(long userId)
-        {
-            return await _context.Set<Review>()
-                .Where(r => r.User.Id == userId)
-                .OrderByDescending(r => r.CreatedAt)
-                .ToListAsync();
-        }
+        // // Pobranie recenzji dla użytkownika
+        // public async Task<List<Review>> SortedListOfUserReviewsAsync(long userId)
+        // {
+        //     return await _context.Set<Review>()
+        //         .Where(r => r.User.Id == userId)
+        //         .OrderByDescending(r => r.CreatedAt)
+        //         .ToListAsync();
+        // }
 
         // Dodanie nowej recenzji
         public async Task<Review> AddAsync(Review review)

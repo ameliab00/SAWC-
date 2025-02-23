@@ -17,18 +17,18 @@ namespace SAW.Repositories
             _context = context;
         }
 
-        // Metoda do wyszukiwania po tytule, ignorując wielkość liter
-        public async Task<Event?> FindByTitleIgnoreCaseAsync(string title)
+        // Metoda do wyszukiwania po tytule
+        public async Task<Event?> FindByTitleAsync(string title)
         {
             return await _context.Set<Event>()
-                .FirstOrDefaultAsync(e => e.Title.ToLower() == title.ToLower());
+                .FirstOrDefaultAsync(e => e.Title == title);
         }
 
-        // Wyszukiwanie po tytule, ignorując wielkość liter
-        public async Task<List<Event>> SearchByTitleLikeIgnoreCaseAsync(string query)
+        // Wyszukiwanie po tytule
+        public async Task<List<Event>> SearchByTitleAsync(string query)
         {
             return await _context.Set<Event>()
-                .Where(e => EF.Functions.Like(e.Title.ToLower(), $"%{query.ToLower()}%"))
+                .Where(e => e.Title.Contains(query))
                 .ToListAsync();
         }
 
@@ -52,7 +52,7 @@ namespace SAW.Repositories
         public async Task<bool> ExistsByTitleAsync(string title)
         {
             return await _context.Set<Event>()
-                .AnyAsync(e => e.Title.ToLower() == title.ToLower());
+                .AnyAsync(e => e.Title == title);
         }
 
         // Pobieranie wydarzenia po ID
@@ -82,4 +82,3 @@ namespace SAW.Repositories
         }
     }
 }
-

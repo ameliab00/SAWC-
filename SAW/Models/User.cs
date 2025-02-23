@@ -17,20 +17,20 @@ namespace SAW.Models
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Password is mandatory")]
+        [StringLength(40, ErrorMessage = "Password cannot be longer than 40 characters.")]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Email is mandatory")]
         // [EmailAddress(ErrorMessage = "Email should be valid")]
         public string Email { get; set; }
-
-        [Required]
+        
         public UserRole UserRole { get; set; }
 
         // Relacje
         
-        public virtual ICollection<Event> EventEntities { get; set; }
+        // public virtual ICollection<Event> EventEntities { get; set; }
         
         
-        public virtual ICollection<Ticket> TicketEntities { get; set; } = new HashSet<Ticket>();
+        // public virtual ICollection<Ticket> TicketEntities { get; set; } = new HashSet<Ticket>();
     }
 }

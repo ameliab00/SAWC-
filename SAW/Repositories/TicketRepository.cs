@@ -36,7 +36,7 @@ namespace SAW.Repositories
                     Barcode = t.Barcode,
                     PurchaseDate = t.PurchaseDate,
                     EventEntity = t.EventEntity,
-                    UserEntity = t.UserEntity
+                    // UserEntity = t.UserEntity
                 })
                 .FirstOrDefaultAsync();
         }
