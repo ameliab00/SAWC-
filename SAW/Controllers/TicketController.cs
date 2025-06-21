@@ -8,7 +8,7 @@ using SAW.Exceptions;
 
 namespace SAW.Controllers
 {
-    [Route("ticket")]
+    [Route("api/tickets")]
     [ApiController]
     public class TicketController : ControllerBase
     {
@@ -21,7 +21,7 @@ namespace SAW.Controllers
             _logger = logger;
         }
 
-        // Pobierz listę biletów dla wydarzenia
+        
         [HttpGet("{eventId}")]
         public async Task<ActionResult<IEnumerable<Ticket>>> GetTicketsForEvent(long eventId)
         {
@@ -36,7 +36,7 @@ namespace SAW.Controllers
             return Ok(tickets); 
         }
 
-        // Pobierz bilet po ID
+        
         [HttpGet("details/{ticketId}")]
         public async Task<ActionResult<Ticket>> GetTicketById(long ticketId)
         {
@@ -49,7 +49,7 @@ namespace SAW.Controllers
             return Ok(new { Message = "Bilet pobrany pomyślnie.", Ticket = ticket });
         }
 
-        // Tworzenie nowego biletu
+        
         [HttpPost("{eventId}")]
         public async Task<ActionResult<Ticket>> CreateTicket(long eventId)
         {
@@ -67,7 +67,7 @@ namespace SAW.Controllers
         }
 
 
-        // Usuwanie biletu
+        
         [HttpDelete("{ticketId}")]
         public async Task<IActionResult> DeleteTicket(long ticketId)
         {

@@ -24,13 +24,13 @@ namespace SAW.Services
             _userRepository = userRepository;
         }
 
-        // Pobranie listy wydarzeń
+        
         public async Task<List<Event>> GetEventListAsync()
         {
             return await _eventRepository.SortedListOfEventsAsync();
         }
 
-        // Tworzenie nowego wydarzenia
+        
         public async Task<Event> CreateEventAsync(CreateEventRequest request)
         {
             if (await _eventRepository.FindByTitleAsync(request.Title) != null)
@@ -55,7 +55,7 @@ namespace SAW.Services
             return eventEntity;
         }
 
-        // Aktualizacja wydarzenia
+        
         public async Task<UpdateEventResponse> UpdateEventAsync(long eventId, UpdateEventRequest updateEventRequest)
         {
             var eventEntity = await _eventRepository.GetByIdAsync(eventId);
@@ -80,7 +80,7 @@ namespace SAW.Services
             };
         }
 
-        // Usuwanie wydarzenia
+        
         public async Task DeleteEventAsync(long eventId)
         {
             var eventToDelete = await _eventRepository.GetByIdAsync(eventId);
@@ -90,17 +90,7 @@ namespace SAW.Services
                 throw new EntityNotFoundException($"Wydarzenie o ID {eventId} nie zostało znalezione.");
             }
             
-            // if (eventToDelete.UserEntities != null)
-            // {
-            //     foreach (var user in eventToDelete.UserEntities)
-            //     {
-            //         user.EventEntities?.Remove(eventToDelete);
-            //     }
-            //
-            //     await _userRepository.SaveChangesAsync();
-            // }
-
-            // 🟢 Sprawdź, czy TicketEntities nie jest null przed iteracją
+ 
             if (eventToDelete.TicketEntities != null)
             {
                 foreach (var ticket in eventToDelete.TicketEntities)
@@ -116,7 +106,7 @@ namespace SAW.Services
             await _eventRepository.DeleteAsync(eventToDelete);
         }
 
-        // Wyszukiwanie wydarzeń po tytule
+        
         public async Task<List<Event>> SearchEventsAsync(string query)
         {
             return await _eventRepository.SearchByTitleAsync(query);

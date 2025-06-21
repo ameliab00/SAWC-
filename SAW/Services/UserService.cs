@@ -16,19 +16,19 @@ namespace SAW.Services
             _userRepository = userRepository;
         }
 
-        // Pobranie użytkownika po nazwie
+        
         public async Task<User?> GetUserByUsernameAsync(string username)
         {
             return await _userRepository.FindByUserNameIgnoreCaseAsync(username);
         }
 
-        // Pobranie listy użytkowników
+        
         public async Task<List<User>> GetUserListAsync()
         {
             return await _userRepository.GetUsersAsync();
         }
 
-        // Tworzenie nowego użytkownika
+        
         public async Task<User> CreateUserAsync(CreateUserRequest createUserRequest)
         {
             var existingUser = await _userRepository.FindByUserNameIgnoreCaseAsync(createUserRequest.UserName);
@@ -46,7 +46,6 @@ namespace SAW.Services
             return await _userRepository.AddAsync(user);
         }
 
-        // Usuwanie użytkownika
         public async Task DeleteUserAsync(long userId)
         {
             var userToDelete = await _userRepository.GetByIdAsync(userId);

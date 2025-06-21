@@ -14,7 +14,7 @@ namespace SAW.Mappers
             _mapper = mapper;
         }
 
-        // Mapowanie
+        
         public Event ToEntity(Event eventEntity, UpdateEventRequest request)
         {
             return

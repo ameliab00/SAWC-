@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SAW.Controllers
 {
-    [Route("event")]
+    [Route("api/events")]
     [ApiController]
     public class EventController : ControllerBase
     {
@@ -17,7 +17,7 @@ namespace SAW.Controllers
             _eventService = eventService;
         }
 
-        // Pobierz listę wydarzeń 
+     
         [HttpGet]
         public async Task<IActionResult> GetEventList()
         {
@@ -30,7 +30,7 @@ namespace SAW.Controllers
             return Ok(new { Message = "Wydarzenia załadowane pomyślnie.", Events = events });
         }
 
-        // Pobierz wydarzenie po ID
+        
         [HttpGet("{eventId}")]
         public async Task<IActionResult> GetEventById(long eventId)
         {
@@ -43,7 +43,7 @@ namespace SAW.Controllers
             return Ok(new { Message = "Wydarzenie pobrane pomyślnie.", Event = eventItem });
         }
 
-        // Tworzenie nowego wydarzenia (dostępne dla każdego)
+        
         [HttpPost]
         public async Task<IActionResult> CreateEvent([FromBody] CreateEventRequest createEventRequest)
         {
@@ -56,7 +56,7 @@ namespace SAW.Controllers
                 new { Message = "Wydarzenie zostało pomyślnie dodane!", Event = createdEvent });
         }
 
-        // Aktualizacja wydarzenia 
+        
         [HttpPatch("{eventId}")]
         public async Task<IActionResult> UpdateEvent(long eventId, [FromBody] UpdateEventRequest updateEventRequest)
         {
@@ -70,7 +70,7 @@ namespace SAW.Controllers
             return Ok(new { Message = "Wydarzenie zostało pomyślnie zaktualizowane!", Event = updatedEvent });
         }
 
-        // Usuwanie wydarzenia 
+        
         [HttpDelete("{eventId}")]
         public async Task<IActionResult> DeleteEvent(long eventId)
         {
@@ -82,7 +82,7 @@ namespace SAW.Controllers
             return Ok(new { Message = "Wydarzenie zostało pomyślnie usunięte." });
         }
 
-        // Wyszukiwanie wydarzeń
+        
         [HttpGet("search")]
         public async Task<IActionResult> SearchEvents([FromQuery] string query)
         {

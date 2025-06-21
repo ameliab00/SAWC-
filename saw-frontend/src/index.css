@@ -1,0 +1,70 @@
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-image: url('https://static.vecteezy.com/system/resources/previews/029/321/681/non_2x/ai-generative-concert-stage-scenery-with-spotlights-colored-lights-smoke-free-photo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.container {
+  max-width: 900px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+  color: #333;
+}
+
+form input, form textarea, form button {
+  margin: 10px 0;
+}
+
+form button {
+  background-color: #4CAF50;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+
+button {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+  }
+  .tile {
+    cursor: pointer;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+}

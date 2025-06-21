@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace SAW.Controllers
 {
-    [Route("review")]
+    [Route("api/reviews")]
     [ApiController]
     public class ReviewController : ControllerBase
     {
@@ -18,18 +18,7 @@ namespace SAW.Controllers
             _reviewService = reviewService;
         }
 
-        // // Pobiera wszystkie recenzje użytkownika
-        // [HttpGet("user/{userId}")]
-        // public async Task<IActionResult> GetAllUserReviews(long userId)
-        // {
-        //     var reviews = await _reviewService.GetUserReviewsAsync(userId);
-        //     if (reviews == null || reviews.Count == 0)
-        //         return NotFound(new { message = "Brak recenzji dla tego użytkownika." });
-        //
-        //     return Ok(new { message = "Recenzje użytkownika załadowane pomyślnie.", data = reviews });
-        // }
-
-        // Pobiera wszystkie recenzje dla danego wydarzenia
+        
         [HttpGet("{eventId}")]
         public async Task<IActionResult> GetReviewsForEvent(long eventId)
         {
@@ -40,7 +29,7 @@ namespace SAW.Controllers
             return Ok(new { message = "Recenzje wydarzenia załadowane pomyślnie.", data = reviews });
         }
 
-        // Tworzy nową recenzję dla wydarzenia
+        
         [HttpPost("{eventId}")]
         public async Task<IActionResult> CreateReview(long eventId, [FromBody] CreateReviewRequest createReviewRequest)
         {
@@ -58,7 +47,7 @@ namespace SAW.Controllers
             }
         }
 
-        // Usuwa istniejącą recenzję
+        
         [HttpDelete("{reviewId}")]
         public async Task<IActionResult> DeleteReview(long reviewId)
         {

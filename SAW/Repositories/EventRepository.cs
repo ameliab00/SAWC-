@@ -17,22 +17,21 @@ namespace SAW.Repositories
             _context = context;
         }
 
-        // Metoda do wyszukiwania po tytule
+        
         public async Task<Event?> FindByTitleAsync(string title)
         {
             return await _context.Set<Event>()
                 .FirstOrDefaultAsync(e => e.Title == title);
         }
 
-        // Wyszukiwanie po tytule
+        
         public async Task<List<Event>> SearchByTitleAsync(string query)
         {
             return await _context.Set<Event>()
                 .Where(e => e.Title.Contains(query))
                 .ToListAsync();
         }
-
-        // Zwracanie listy eventów posortowanych po dacie rozpoczęcia
+        
         public async Task<List<Event>> SortedListOfEventsAsync()
         {
             return await _context.Set<Event>()
@@ -41,40 +40,40 @@ namespace SAW.Repositories
                 .ToListAsync();
         }
 
-        // Dodanie nowego wydarzenia
+        
         public async Task AddAsync(Event eventEntity)
         {
             await _context.Set<Event>().AddAsync(eventEntity);
             await _context.SaveChangesAsync();
         }
 
-        // Sprawdzanie, czy wydarzenie o danym tytule już istnieje
+        
         public async Task<bool> ExistsByTitleAsync(string title)
         {
             return await _context.Set<Event>()
                 .AnyAsync(e => e.Title == title);
         }
 
-        // Pobieranie wydarzenia po ID
+        
         public async Task<Event?> GetByIdAsync(long eventId)
         {
             return await _context.Set<Event>().FindAsync(eventId);
         }
 
-        // Zapisanie zmian w bazie danych
+        
         public async Task SaveChangesAsync()
         {
             await _context.SaveChangesAsync();
         }
 
-        // Usuwanie wydarzenia
+        
         public async Task DeleteAsync(Event eventEntity)
         {
             _context.Set<Event>().Remove(eventEntity);
             await _context.SaveChangesAsync();
         }
 
-        // Usuwanie wielu obiektów
+        
         public async Task DeleteRangeAsync(IEnumerable<Event> eventEntities)
         {
             _context.Set<Event>().RemoveRange(eventEntities);

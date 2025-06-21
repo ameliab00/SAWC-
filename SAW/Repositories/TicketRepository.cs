@@ -17,7 +17,7 @@ namespace SAW.Repositories
             _context = context;
         }
 
-        // Pobranie listy biletów dla wydarzenia
+        
         public async Task<List<Ticket>> GetTicketsForEventAsync(long eventId)
         {
             return await _context.Set<Ticket>()
@@ -25,7 +25,7 @@ namespace SAW.Repositories
                 .ToListAsync();
         }
 
-        // Pobranie biletu po ID z projekcją
+        
         public async Task<TicketProjections?> FindTicketByIdAsync(long ticketId)
         {
             return await _context.Set<Ticket>()
@@ -41,39 +41,39 @@ namespace SAW.Repositories
                 .FirstOrDefaultAsync();
         }
 
-        // Dodanie nowego biletu
+        
         public async Task<Ticket> AddAsync(Ticket ticket)
         {
             await _context.Set<Ticket>().AddAsync(ticket);
-            await SaveChangesAsync(); // Zapisanie zmian w bazie danych
+            await SaveChangesAsync(); 
             return ticket;
         }
 
-        // Usunięcie biletu
+        
         public async Task DeleteAsync(Ticket ticket)
         {
             _context.Set<Ticket>().Remove(ticket);
-            await SaveChangesAsync(); // Zapisanie zmian po usunięciu
+            await SaveChangesAsync(); 
         }
 
-        // Usunięcie biletów przekazanych w liście
+        
         public async Task DeleteTicketsAsync(ICollection<Ticket> tickets)
         {
             _context.Set<Ticket>().RemoveRange(tickets);
-            await SaveChangesAsync(); // Zapisanie zmian po usunięciu biletów
+            await SaveChangesAsync(); 
         }
 
 
-        // Pobranie biletu po ID
+        
         public async Task<Ticket?> GetByIdAsync(long ticketId)
         {
             return await _context.Set<Ticket>().FindAsync(ticketId);
         }
 
-        // Zapisanie zmian w bazie danych
+        
         public async Task SaveChangesAsync()
         {
-            await _context.SaveChangesAsync(); // Metoda SaveChangesAsync zapisuje zmiany w bazie
+            await _context.SaveChangesAsync(); 
         }
     }
 }

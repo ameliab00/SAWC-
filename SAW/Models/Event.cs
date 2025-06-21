@@ -24,12 +24,12 @@ namespace SAW.Models
 
         [Column("starting_date")]
         [DataType(DataType.Date)]
-        [Range(typeof(DateTime), "01/01/2023", "12/31/2100", ErrorMessage = "Starting date should be future or present")]
+        [Range(typeof(DateTime), "2023-12-31", "2099-12-31", ErrorMessage = "Starting date should be future or present")]
         public DateTime StartingDate { get; set; }
 
         [Column("ending_date")]
         [DataType(DataType.Date)]
-        [Range(typeof(DateTime), "01/01/2023", "12/31/2100", ErrorMessage = "Ending date should be future")]
+        [Range(typeof(DateTime), "2023-12-31", "2099-12-31", ErrorMessage = "Ending date should be future")]
         public DateTime EndingDate { get; set; }
 
         [Column("seating_capacity")]

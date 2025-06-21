@@ -19,19 +19,19 @@ namespace SAW.Services
             _eventRepository = eventRepository;
         }
 
-        // Pobranie listy biletów dla wydarzenia
+        
         public async Task<List<Ticket>> GetTicketsForEventAsync(long eventId)
         {
             return await _ticketRepository.GetTicketsForEventAsync(eventId);
         }
 
-        // Znalezienie biletu po ID
+        
         public async Task<TicketProjections?> GetTicketByIdAsync(long ticketId)
         {
             return await _ticketRepository.FindTicketByIdAsync(ticketId);
         }
 
-        // Tworzenie biletu
+        
         public async Task<Ticket> CreateTicketAsync(long eventId)
         {
             var eventEntity = await _eventRepository.GetByIdAsync(eventId);
@@ -53,7 +53,7 @@ namespace SAW.Services
             return await _ticketRepository.AddAsync(ticket);
         }
 
-        // Usuwanie biletu
+        
         public async Task DeleteTicketAsync(long ticketId)
         {
             var ticket = await _ticketRepository.GetByIdAsync(ticketId);

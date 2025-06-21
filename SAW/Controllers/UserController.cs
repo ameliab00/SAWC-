@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SAW.Controllers
 {
-    [Route("user")]
+    [Route("api/users")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -18,7 +18,7 @@ namespace SAW.Controllers
             _userService = userService;
         }
 
-        // Pobranie listy użytkowników
+        
         [HttpGet]
         public async Task<IActionResult> GetUserList()
         {
@@ -33,7 +33,7 @@ namespace SAW.Controllers
             }
         }
 
-        // Pobranie użytkownika po nazwie
+        
         [HttpGet("{username}")]
         public async Task<IActionResult> GetUserByUsername(string username)
         {
@@ -52,7 +52,7 @@ namespace SAW.Controllers
             }
         }
 
-        // Tworzenie nowego użytkownika
+        
         [HttpPost]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest createUserRequest)
         {
@@ -68,7 +68,7 @@ namespace SAW.Controllers
             }
         }
 
-        // Usuwanie użytkownika
+        
         [HttpDelete("{userId}")]
         public async Task<IActionResult> DeleteUser(long userId)
         {
